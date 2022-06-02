@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>PharmacyAdmin</title>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar__header">Аптека</div>
+        <a class="active" href="/pharmacies">
+            <i class="fas fa-briefcase-medical"></i><span>Pharmacies</span>
+        </a>
+        <a href="/products">
+            <i class="fas fa-tablets"></i><span>Products</span>
+        </a>
+        <a href="/available">
+            <i class="fas fa-tablets"></i><span>Available</span>
+        </a>
+    </div>
+
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+            </div>
+        </header>
+        <main class="main">
+            <div class="main__container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>id_user</th>
+                            <th>id_good</th>
+                            <th>text</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in data%}
+                        <tr>
+                            <td data-label="id_user">{{i[0]}}</td>
+                            <td data-label="id_good">{{i[1]}}</td>
+                            <td data-label="text">{{i[2]}}</td>
+                        </tr>
+                        {%endfor%}
+                        
+                        
+                    </tbody>
+                    
+                </table>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>

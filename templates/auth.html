@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Вход</title>
+</head>
+
+<body>
+    <div class="login__container">
+        <!-- авторизация -->
+        <div class="login-page">
+            <h1 class="login-title"><i class="fas fa-briefcase-medical"></i> Аптека</h1>
+            <div class="form">
+                <form class="login-form" method="post" action="{{ '/auth' }}">
+                    <input type="text" id="login" name="login" placeholder="Введите ваш логин" />
+                    <input type="password" id="password" name="password" placeholder="Введите ваш пароль" />
+                    <button>Войти
+                    </button>
+                </form>
+            </div>
+        </div>
+        <!-- -------------- -->
+    </div>
+</body>
+
+</html>

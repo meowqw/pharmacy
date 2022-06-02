@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>PharmacyAdmin</title>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar__header">Аптека</div>
+        <a class="active" href="/pharmacies">
+            <i class="fas fa-briefcase-medical"></i><span>Pharmacies</span>
+        </a>
+        <a href="/products">
+            <i class="fas fa-tablets"></i><span>Products</span>
+        </a>
+        <a href="/available">
+            <i class="fas fa-tablets"></i><span>Available</span>
+        </a>
+        <form class="sidebar__search search" method="post" action="{{ '/search' }}">
+            <input type="text" id="text" name="text" class="search__term" placeholder="Что вы хотите найти?">
+            <button type="submit" class="search__button">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+            </div>
+        </header>
+        <main class="main">
+            <div class="main__container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>barcode</th>
+                            <th>title</th>
+                            <th>manufacturer</th>
+                            <th>img</th>
+                            <th>information</th>
+                            <th>price</th>
+                            <th>leave_condition</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in data%}
+                        <tr>
+                            <td data-label="barcode">{{i[0]}}<br><a href="/reviews/{{i[0]}}">Отзывы</a><br><a href="/available/{{i[0]}}">Наличие</a>
+                                <br><a href="/del/{{i[0]}}">Удалить</a></td>
+                            <td data-label="title">{{i[1]}}</td>
+                            <td data-label="manufacturer">{{i[2]}}</td>
+                            <td data-label="img">{{i[3]}}</td>
+                            <td data-label="information">{{i[4]}}</td>
+                            <td data-label="price">{{i[5]}}</td>
+                            <td data-label="leave_condition">{{i[6]}}</td>
+                        </tr>
+                        {%endfor%}
+                        <form method="post" action="{{'/products'}}" enctype=multipart/form-data>
+                            <td data-label="barcode"><input id="id" name="id" style="width: 50px; border: 1px solid"></td>
+                            <td data-label="title"><input id="title" name="title" style="width: 75px; border: 1px solid"></td>
+                            <td data-label="manufacturer"><input id="manufacturer" name="manufacturer" style="width: 120px; border: 1px solid"></td>
+                            <td data-label="img"><input type="file" accept=".jpg, .png, .jpeg, .webp" name="img" multiple></td>
+                            <td data-label="information"><textarea id="information" name="information" style="width: 330px; border: 1px solid"></textarea></td>
+                            <td data-label="price"><input id="price" name="price" style="width: 30px; border: 1px solid"></td>
+                            <td data-label="leave_condition"><input id="leave_condition" name="leave_condition" style="width: 30px; border: 1px solid">
+                                <button style="background-color: red;">ENTER</button></td>
+                        </form>
+                        
+                    </tbody>
+                    
+                </table>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>

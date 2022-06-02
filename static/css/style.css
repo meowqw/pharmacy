@@ -1,0 +1,455 @@
+/* Обнуление */
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+html,
+body {
+    height: 100%;
+    line-height: 1;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #000000;
+}
+
+body.lock {
+    overflow: hidden;
+}
+
+/* ------------------- */
+.wrapper {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background: #ffffff;
+}
+
+/* ------------------- */
+.main {
+    flex: 1 1 auto;
+}
+
+[class*="__container"] {
+    max-width: 1220px;
+    margin: 0px auto;
+    padding: 0px 10px;
+}
+
+/* PC */
+@media (max-width: 1087px) {
+    [class*="__container"] {
+        max-width: 970px;
+    }
+}
+
+/* TABLET */
+@media (max-width: 991.98px) {
+    [class*="__container"] {
+        max-width: 750px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 767.98px) {
+    [class*="__container"] {
+        max-width: none;
+    }
+}
+
+/* MOBILE SMALL*/
+@media (max-width: 479.98px) {}
+
+/* ============= sidebar ================ */
+.sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color: #ececec;
+    transition: all .5s ease;
+    opacity: 1;
+    display: flex;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.sidebar__header {
+    font-weight: 400;
+    color: #fff;
+    min-height: 40px;
+    min-width: 100px;
+    font-size: 18px;
+    line-height: 150%;
+    text-align: center;
+    background: none;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #4CAF50;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    color: #76808f;
+    height: 55px;
+    width: 100%;
+    padding-left: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    border-left: 5px solid transparent;
+    box-sizing: border-box;
+    transition: all .5s ease;
+    border-right: 1px solid #4CAF50;
+    min-width: 150px;
+}
+
+.sidebar a:hover {
+    border-left: 5px solid #4CAF50;
+    ;
+    color: #4CAF50;
+    ;
+}
+
+.sidebar a i {
+    font-size: 23px;
+    margin-right: 16px;
+}
+
+.sidebar a span {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.sidebar i {
+    max-width: 23px;
+}
+
+@media (max-width: 1087px) {
+    .sidebar {
+        flex-wrap: wrap;
+    }
+
+    .sidebar a {
+        flex: 50%;
+        height: 37px;
+    }
+
+    .sidebar__header {
+        width: 100%;
+        line-height: 100%;
+        min-height: 30px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .sidebar {
+        height: auto;
+        left: 0;
+        flex-wrap: wrap;
+    }
+
+    .sidebar a {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-left: 0px;
+        gap: 5px;
+        flex: 50%
+    }
+
+    .sidebar__header {
+        display: none;
+    }
+
+    span {
+        margin-left: 0px;
+        opacity: 1;
+        font-size: 10px;
+    }
+
+    .sidebar a i {
+        margin-left: 13px;
+        font-size: 14px;
+    }
+
+    .sidebar a:hover {
+        background: inherit;
+        font-size: 14px;
+    }
+
+    .sidebar a:hover span {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* ============= main ============== */
+
+/* table */
+table.table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+table.table tr {
+    background-color: #f3f3f3;
+}
+
+table.table th {
+    color: #252525;
+    text-transform: uppercase;
+}
+
+table.table th,
+table.table td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid rgb(233, 233, 233);
+}
+
+@media screen and (max-width: 767.98px) {
+    table.table {
+        border: 0;
+        font-size: 12px;
+    }
+
+    table.table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    table.table tr {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    table.table td {
+        display: block;
+        text-align: right;
+    }
+
+    table.table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    table.table td:last-child {
+        border-bottom: 0;
+    }
+}
+
+
+
+/* authorization */
+.login__container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 32px;
+    color: #4CAF50;
+}
+
+.login-page {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+}
+
+.form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.form input {
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.form button {
+    text-transform: uppercase;
+    outline: 0;
+    background: #4CAF50;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.form button:hover,
+.form button:active,
+.form button:focus {
+    background: #49924e;
+}
+
+
+/* homepage */
+.main__container {
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main__home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.main__title {
+    font-size: 30px;
+}
+
+.main__subtitle {
+    font-size: 18px;
+    max-width: 400px;
+
+}
+
+.main__list {
+    font-size: 24px;
+    background: #ececec;
+    padding: 20px 90px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.main__list a {
+    color: #4CAF50;
+    transition: 0.2s;
+}
+
+.main__list ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.main__list i {
+    margin-right: 10px;
+}
+
+.main__list a:hover {
+    color: #2a572d;
+}
+
+@media (max-width: 479.98px) {
+    .main__list {
+        padding: 15px 30px;
+    }
+}
+
+.search {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.search__term {
+    width: 100%;
+    border: 1px solid #49924e;
+    border-right: none;
+    padding: 5px 10px;
+    height: 36px;
+    border-radius: 20px 0 0 20px;
+    outline: none;
+    color: #000;
+    background: #f5f5f5;
+    letter-spacing: 0.5px;
+}
+
+.search__term:focus {
+    color: #252525;
+}
+
+.search__button {
+    width: 50px;
+    height: 36px;
+    border: 1px solid #49924e;
+    background: #49924e;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.2s;
+}
+
+.search__button:hover {
+    background: #306934;
+}
+
+@media screen and (max-width: 767.98px) {
+    .search {
+        margin: 5px;
+    }
+}

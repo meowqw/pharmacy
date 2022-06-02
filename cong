@@ -1,0 +1,17 @@
+<VirtualHost *:80>
+		ServerName altaykomfort-pharmacyadmin22.ru
+		ServerAdmin email@example.com
+		WSGIScriptAlias / /var/www/pharmacy/pharmacy.wsgi
+		<Directory /var/www/pharmacy/>
+			Order allow,deny
+			Allow from all
+		</Directory>
+		Alias /static /var/www/pharmacy/static
+		<Directory /var/www/pharmacy/static/>
+			Order allow,deny
+			Allow from all
+		</Directory>
+		ErrorLog ${APACHE_LOG_DIR}/error.log
+		LogLevel warn
+		CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
