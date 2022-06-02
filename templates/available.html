@@ -41,7 +41,7 @@
                     <tbody>
                         {% for i in data%}
                         <tr>
-                            <td data-label="id_pharmacy">{{i[0]}}</td>
+                            <td data-label="id_pharmacy">{{i[0]}} <br><a href="/del_av/{{i[0]}}/{{i[1]}}">Удалить</a></td>
                             <td data-label="id_good">{{i[1]}}</td>
                             <td data-label="available">{{i[2]}}</td>
                         </tr>

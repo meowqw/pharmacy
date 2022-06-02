@@ -196,6 +196,44 @@ def delete(id):
     data = DB().get_all_goods()
     return render_template('index.html', data=data)
 
+@app.route('/delph/<string:id>')
+@login_required
+def delete_pharmacy(id):
+    # try:
+    #     DB().delete_reviews(id)
+    # except Exception as e:
+    #     pass
+
+    try:
+        DB().delete_available_pharmacy(id)
+    except Exception as e:
+        pass
+
+    try:
+        DB().delete_pharmacy(id)
+    except Exception as e:
+        print(e)
+       
+    return redirect(url_for('pharmacies'))
+
+
+@app.route('/del_av/<string:id_p>/<string:id_av>')
+@login_required
+def delete_available(id_p, id_av):
+    # try:
+    #     DB().delete_reviews(id)
+    # except Exception as e:
+    #     pass
+
+    try:
+        DB().delete_available_id(id_p, id_av)
+
+    except Exception as e:
+        print(e)
+        pass
+
+       
+    return redirect(url_for('available'))
 
 if __name__ == "__main__":
     # Запуск

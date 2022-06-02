@@ -43,7 +43,7 @@
                     <tbody>
                         {% for i in data%}
                         <tr>
-                            <td data-label="id">{{i[0]}}</td>
+                            <td data-label="id">{{i[0]}}  <br><a href="/delph/{{i[0]}}">Удалить</a></td>
                             <td data-label="title">{{i[1]}}</td>
                             <td data-label="address">{{i[2]}}</td>
                             <td data-label="phone">{{i[3]}}</td>

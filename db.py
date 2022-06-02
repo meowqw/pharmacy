@@ -286,10 +286,28 @@ class DB:
         self.cursor.execute(query)
         self.connection.commit()
         self.connection.close()
+    
+    def delete_available_pharmacy(self, id_):
+        query = "DELETE FROM available WHERE id_pharmacy = '%s'" % (id_)
+        self.cursor.execute(query)
+        self.connection.commit()
+        self.connection.close()
+
+    def delete_available_id(self, id_ph, id_good):
+        query = "DELETE FROM available WHERE id_pharmacy = '%s' and id_good = '%s'" % (id_ph, id_good)
+        self.cursor.execute(query)
+        self.connection.commit()
+        self.connection.close()
 
 
     def delete_reviews(self, id_):
         query = "DELETE FROM reviews WHERE id_good = '%s'" % (id_)
+        self.cursor.execute(query)
+        self.connection.commit()
+        self.connection.close()
+
+    def delete_pharmacy(self, id_):
+        query = "DELETE FROM pharmacy WHERE id = '%s'" % (id_)
         self.cursor.execute(query)
         self.connection.commit()
         self.connection.close()
