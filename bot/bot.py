@@ -45,7 +45,7 @@ async def process_start_command(message: types.Message):
                 'username': message.chat.first_name}
         DB().add_user(data)
     except Exception as e:
-        await bot.send_message(message.chat.id, e)
+        pass
 
 
 @dp.message_handler()
