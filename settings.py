@@ -6,7 +6,7 @@ USER = 'user'
 PASSWORD = 'Neet2001' # 'Neet2001'
 DB_NAME = 'pharmacy' # 'pharmacy'
 
-TOKEN = '5344722188:AAGGtyyEn-DO0kMZjUUWovIzBULRpS3C4BY'
+TOKEN = '5402759941:AAG0QLuwHDaUncynX7xJZJbG5Rdw-DtS1vk'
 
 
 IMG_PATH = '/var/www/pharmacy/data/img/'
