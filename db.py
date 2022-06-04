@@ -1,11 +1,11 @@
 
 import settings
-from mysql.connector import connect, Error
+from MySQLdb import _mysql
 import sys
 
 class DB:
     def __init__(self):
-        self.connection = connect(host=settings.HOST,
+        self.connection = _mysql.connect(host=settings.HOST,
                                   #   port=settings.PORT,
                                   user=settings.USER,
                                   password=settings.PASSWORD,
