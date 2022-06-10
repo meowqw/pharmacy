@@ -94,15 +94,15 @@ class DB:
 
     def create_tables(self):
         """CREATE TABLES"""
-        self.create_users_table()
-        print("[DB]: users table created")
-        self.create_pharmacy_table()
-        print("[DB]: pharmacy table created")
-        self.create_goods_table()
-        print("[DB]: goods table created")
-        self.create_reviews_table()
-        print("[DB]: reviews table created")
-        self.create_available_table()
+        # self.create_users_table()
+        # print("[DB]: users table created")
+        # self.create_pharmacy_table()
+        # print("[DB]: pharmacy table created")
+        # self.create_goods_table()
+        # print("[DB]: goods table created")
+        # self.create_reviews_table()
+        # print("[DB]: reviews table created")
+        # self.create_available_table()
         print("[DB]: available table created")
         self.create_user_table()
         print("[DB]: user table created")
@@ -321,4 +321,4 @@ class DB:
 # DB().add_user({'id': 213123213, 'login': 'sadf', 'username': 'erewr'})
 # DB().add_review({'id_good': 'sdfsf', 'id_user': 213123213, 'rating': 4, 'text': 'sdfsdf'})
 
-# DB().add_user({'id': 1, 'login': 'admin', 'password': 'admin'})
+# DB().add_users({'id': 1, 'login': 'admin', 'password': 'admin'})
