@@ -11,7 +11,7 @@ import settings
 
 app = Flask(__name__)
 app.secret_key = 'secret'
-# login_manager = LoginManager(app)
+login_manager = LoginManager(app)
 
 app.config['SECRET_KEY'] = 'secret'
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{settings.USER}:{settings.PASSWORD}@{settings.HOST}:{settings.PORT}/{settings.DB_NAME}?charset=utf8mb4'
@@ -20,16 +20,16 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 app_root = os.path.dirname(os.path.abspath(__file__))
 
-# # DB Model USER for auth
-# class User(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     login = db.Column(db.String(300), nullable=False)
-#     password = db.Column(db.String(300), nullable=False)
+# DB Model USER for auth
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    login = db.Column(db.String(300), nullable=False)
+    password = db.Column(db.String(300), nullable=False)
 
 
-# @login_manager.user_loader
-# def load_user(user_id):
-#     return UserLogin().fromDataBase(user_id, User)
+@login_manager.user_loader
+def load_user(user_id):
+    return UserLogin().fromDataBase(user_id, User)
 
 
 @app.route('/auth', methods=['POST', 'GET'])
@@ -47,10 +47,10 @@ def auth():
     return render_template('auth.html')
 
 @app.route('/products', methods=['POST', 'GET'])
-# @login_required
+@login_required
 def products():
     """Товары страница"""
-
+  
     data = DB().get_all_goods()
     ids = [i[0] for i in data]
     print(data)
@@ -81,16 +81,17 @@ def products():
 
         return redirect(url_for('products'))
 
-    # Возвращает html Товары страницы
-    return render_template('index.html', data=data)
+        # Возвращает html Товары страницы
+        return render_template('index.html', data=data)
+
 
 
 @app.route('/pharmacies', methods=['POST', 'GET'])
-# @login_required
+@login_required
 def pharmacies():
     """Страница с аптеками"""
 
-    data = DB().get_all_pharmacy()
+    # data = DB().get_all_pharmacy()
     ids = [i[0] for i in data]
 
     # Добавление новой позиции
@@ -108,12 +109,13 @@ def pharmacies():
             DB().update_pharmacy(
                 {'id': int(id_), 'title': title, 'address': address, 'phone': phone, 'schedule': schedule})
         return redirect(url_for('pharmacies'))
-
+    
+    data = []
     # Возвращает pharmacies
     return render_template('pharmacies.html', data=data)
 
 @app.route('/available', methods=['POST', 'GET'])
-# @login_required
+@login_required
 def available():
     """Страница с наличием"""
 
@@ -138,7 +140,7 @@ def available():
     return render_template('available.html', data=data)
 
 @app.route('/available/<string:id>', methods=['POST', 'GET'])
-# @login_required
+@login_required
 def available_get(id):
     data=DB().get_pharmacy_available_by_id(id)
     print(data)
@@ -147,12 +149,12 @@ def available_get(id):
     return render_template('available.html', data=data)
 
 @app.route('/')
-# @login_required
+@login_required
 def index():
     return render_template('home.html')
 
 @app.route('/reviews/<string:id>')
-# @login_required
+@login_required
 def reviews(id):
 
     data = DB().get_reviews_by_id(id)
@@ -160,7 +162,7 @@ def reviews(id):
     return render_template('reviews.html', data=data)
 
 @app.route('/search', methods=['POST', 'GET'])
-# @login_required
+@login_required
 def search():
     if request.method == "POST":
 
@@ -176,7 +178,7 @@ def search():
 
 
 @app.route('/del/<string:id>')
-# @login_required
+@login_required
 def delete(id):
     try:
         DB().delete_reviews(id)
@@ -197,7 +199,7 @@ def delete(id):
     return render_template('index.html', data=data)
 
 @app.route('/delph/<string:id>')
-# @login_required
+@login_required
 def delete_pharmacy(id):
     # try:
     #     DB().delete_reviews(id)
@@ -218,7 +220,7 @@ def delete_pharmacy(id):
 
 
 @app.route('/del_av/<string:id_p>/<string:id_av>')
-# @login_required
+@login_required
 def delete_available(id_p, id_av):
     # try:
     #     DB().delete_reviews(id)
