@@ -82,7 +82,7 @@ def products():
         return redirect(url_for('products'))
 
         # Возвращает html Товары страницы
-        return render_template('index.html', data=data)
+    return render_template('index.html', data=data)
 
 
 
@@ -91,7 +91,7 @@ def products():
 def pharmacies():
     """Страница с аптеками"""
 
-    # data = DB().get_all_pharmacy()
+    data = DB().get_all_pharmacy()
     ids = [i[0] for i in data]
 
     # Добавление новой позиции
@@ -110,7 +110,6 @@ def pharmacies():
                 {'id': int(id_), 'title': title, 'address': address, 'phone': phone, 'schedule': schedule})
         return redirect(url_for('pharmacies'))
     
-    data = []
     # Возвращает pharmacies
     return render_template('pharmacies.html', data=data)
 
