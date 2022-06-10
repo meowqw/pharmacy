@@ -19,7 +19,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 app_root = os.path.dirname(os.path.abspath(__file__))
-
+print(sys.setrecursionlimit(2000))
+print(sys.getrecursionlimit()) 
 # DB Model USER for auth
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
