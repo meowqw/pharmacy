@@ -41,7 +41,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- {% for i in data%}
+                        {% for i in data%}
                         <tr>
                             <td data-label="id">{{i[0]}}  <br><a href="/delph/{{i[0]}}">Удалить</a></td>
                             <td data-label="title">{{i[1]}}</td>
@@ -49,7 +49,7 @@
                             <td data-label="phone">{{i[3]}}</td>
                             <td data-label="schedule">{{i[4]}}</td>
                         </tr>
-                        {% endfor %} -->
+                        {% endfor %}
                         <form action="{{'/pharmacies'}}" method="post">
                             <td data-label="id">
                                 <input id="id" name="id" style="border: 1px solid">

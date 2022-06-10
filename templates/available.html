@@ -39,13 +39,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- {% for i in data%}
+                        {% for i in data%}
                         <tr>
                             <td data-label="id_pharmacy">{{i[0]}} <br><a href="/del_av/{{i[0]}}/{{i[1]}}">Удалить</a></td>
                             <td data-label="id_good">{{i[1]}}</td>
                             <td data-label="available">{{i[2]}}</td>
                         </tr>
-                        {%endfor%} -->
+                        {%endfor%}
                         <form method="post" action="{{'/available'}}" enctype=multipart/form-data>
                             <td data-label="id_pharmacy"><input id="id_pharmacy" name="id_pharmacy" style="width: 50px; border: 1px solid"></td>
                             <td data-label="id_good"><input id="id_good" name="id_good" style="width: 75px; border: 1px solid"></td>
