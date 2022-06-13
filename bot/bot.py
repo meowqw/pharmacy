@@ -90,14 +90,14 @@ async def barcode_img(message):
      # output info
     if result != None:
         try:
-            data_result = result[0]
-            barcode = data_result[0]
-            title = data_result[1]
-            manufacturer = data_result[2]
-            img = settings.IMG_PATH + data_result[3]
-            info = data_result[4]
-            price = data_result[5]
-            if data_result[6] == 1:
+            i = result[0]
+            barcode = i[0]
+            title = i[1]
+            manufacturer = i[2]
+            img = settings.IMG_PATH + i[3]
+            info = i[4]
+            price = i[5]
+            if i[6] == 1:
                 leave_condition = 'Да'
             else:
                 leave_condition = 'Нет'
@@ -144,33 +144,33 @@ async def search_title(message: types.Message, state: FSMContext):
             
         # output info
         if len(result):
-            try:
-                data_result = result[0]
-                barcode = data_result[0]
-                title = data_result[1]
-                manufacturer = data_result[2]
-                img = settings.IMG_PATH + data_result[3]
-                info = data_result[4]
-                price = data_result[5]
-                if data_result[6] == 1:
-                    leave_condition = 'Да'
-                else:
-                    leave_condition = 'Нет'
+            for i in result:
+                try:
+                    barcode = i[0]
+                    title = i[1]
+                    manufacturer = i[2]
+                    img = settings.IMG_PATH + i[3]
+                    info = i[4]
+                    price = i[5]
+                    if i[6] == 1:
+                        leave_condition = 'Да'
+                    else:
+                        leave_condition = 'Нет'
 
-                # good menu keuboard
-                available_check = types.InlineKeyboardButton('❓ Наличие', callback_data=f'available_check_{barcode}')
-                reviews_view = types.InlineKeyboardButton('📋 Отзывы', callback_data=f'reviews_view_{barcode}')
-                reviews_write = types.InlineKeyboardButton('✏ Написать отзыв', callback_data=f'reviews_write_{barcode}')
+                    # good menu keuboard
+                    available_check = types.InlineKeyboardButton('❓ Наличие', callback_data=f'available_check_{barcode}')
+                    reviews_view = types.InlineKeyboardButton('📋 Отзывы', callback_data=f'reviews_view_{barcode}')
+                    reviews_write = types.InlineKeyboardButton('✏ Написать отзыв', callback_data=f'reviews_write_{barcode}')
 
-                keyboard = types.InlineKeyboardMarkup().add(available_check).add(reviews_view).add(reviews_write)
-                await bot.send_photo(message.chat.id, photo=open(img, 'rb'), caption=f"*Название:* {title} " +
-                                                                                    f"\n*Производитель:* {manufacturer}\n" + 
-                                                                                    f"*Описание:* {info}\n\n" + 
-                                                                                    f"*💷 Цена:* {price} руб\n" + 
-                                                                                    f"*Отпуск без рецепта:* {leave_condition}\n" + 
-                                                                                    f"*Штрихкод:* {barcode}", parse_mode="Markdown", reply_markup=keyboard)
-            except Exception as e:
-                await bot.send_message(message.chat.id, 'Я нашел товар, но вам его не покажу 😞')
+                    keyboard = types.InlineKeyboardMarkup().add(available_check).add(reviews_view).add(reviews_write)
+                    await bot.send_photo(message.chat.id, photo=open(img, 'rb'), caption=f"*Название:* {title} " +
+                                                                                        f"\n*Производитель:* {manufacturer}\n" + 
+                                                                                        f"*Описание:* {info}\n\n" + 
+                                                                                        f"*💷 Цена:* {price} руб\n" + 
+                                                                                        f"*Отпуск без рецепта:* {leave_condition}\n" + 
+                                                                                        f"*Штрихкод:* {barcode}", parse_mode="Markdown", reply_markup=keyboard)
+                except Exception as e:
+                    await bot.send_message(message.chat.id, 'Я нашел товар, но вам его не покажу 😞')
         
         else:
             await bot.send_message(message.chat.id, 'К сожалению я не смог ничего найти 😞')
