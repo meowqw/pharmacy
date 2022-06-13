@@ -54,7 +54,6 @@ def products():
   
     data = DB().get_all_goods()
     ids = [i[0] for i in data]
-    print(data)
     if request.method == "POST":
 
         id_ = request.form['id']
@@ -84,6 +83,45 @@ def products():
 
         # Возвращает html Товары страницы
     return render_template('index.html', data=data)
+
+@app.route('/update/<string:id>', methods=['POST', 'GET'])
+@login_required
+def update_goods(id):
+    """Обнволение товара"""
+  
+    data = DB().get_good_by_id(id)
+    ids = [i[0] for i in data]
+    if request.method == "POST":
+
+        id_ = request.form['id']
+        title = request.form['title']
+        manufacturer = request.form['manufacturer']
+        # save img
+        if request.files['img'].content_type != 'application/octet-stream':
+            img = request.files['img'].filename
+            destination = '/'.join([settings.IMG_PATH, img])
+            request.files['img'].save(destination)
+        else:
+            img = None
+
+        information = request.form['information']
+        price = request.form['price']
+        leave_condition = request.form['leave_condition']
+        
+        if id_ not in ids:
+            DB().add_goods({'id': id_, 'title': title, 'manufacturer': manufacturer, 'img': img,
+                            'information': information, 'price': price, 'leave_condition': leave_condition})
+        else:
+            if img == None:
+                img = data[0][3]
+            DB().update_goods(
+                {'id': id_, 'title': title, 'manufacturer': manufacturer, 'img': img,
+                            'information': information, 'price': price, 'leave_condition': leave_condition})
+
+        return redirect(url_for('products'))
+
+        # Возвращает html Товары страницы
+    return render_template('update.html', data=data[0])
 
 
 

@@ -49,26 +49,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for i in data%}
                         <tr>
-                            <td data-label="barcode">{{i[0]}}<br><a href="/reviews/{{i[0]}}">Отзывы</a><br><a href="/available/{{i[0]}}">Наличие<br><a href="/update/{{i[0]}}">Изменить</a>
-                                <br><a href="/del/{{i[0]}}">Удалить</a></td>
-                            <td data-label="title">{{i[1]}}</td>
-                            <td data-label="manufacturer">{{i[2]}}</td>
-                            <td data-label="img">{{i[3]}}</td>
-                            <td data-label="information">{{i[4]}}</td>
-                            <td data-label="price">{{i[5]}}</td>
-                            <td data-label="leave_condition">{{i[6]}}</td>
+                            <td data-label="barcode">{{data[0]}}<br><a href="/reviews/{{data[0]}}">Отзывы</a><br><a href="/available/{{data[0]}}">Наличие</a>
+                                <br><a href="/del/{{data[0]}}">Удалить</a></td>
+                            <td data-label="title">{{data[1]}}</td>
+                            <td data-label="manufacturer">{{data[2]}}</td>
+                            <td data-label="img">{{data[3]}}</td>
+                            <td data-label="information">{{data[4]}}</td>
+                            <td data-label="price">{{data[5]}}</td>
+                            <td data-label="leave_condition">{{data[6]}}</td>
                         </tr>
-                        {%endfor%}
-                        <form method="post" action="{{'/products'}}" enctype=multipart/form-data>
-                            <td data-label="barcode"><input id="id" name="id" style="width: 50px; border: 1px solid"></td>
-                            <td data-label="title"><input id="title" name="title" style="width: 75px; border: 1px solid"></td>
-                            <td data-label="manufacturer"><input id="manufacturer" name="manufacturer" style="width: 120px; border: 1px solid"></td>
-                            <td data-label="img"><input type="file" accept=".jpg, .png, .jpeg, .webp" name="img" multiple></td>
-                            <td data-label="information"><textarea id="information" name="information" style="width: 330px; border: 1px solid"></textarea></td>
-                            <td data-label="price"><input id="price" name="price" style="width: 30px; border: 1px solid"></td>
-                            <td data-label="leave_condition"><input id="leave_condition" name="leave_condition" style="width: 30px; border: 1px solid">
+                        <form method="post" action="/update/{{data[0]}}" enctype=multipart/form-data>
+                            <td data-label="barcode"><input value={{data[0]}} id="id" name="id" style="width: 50px; border: 1px solid"></td>
+                            <td data-label="title"><input value={{data[1]}} id="title" name="title" style="width: 75px; border: 1px solid"></td>
+                            <td data-label="manufacturer"><input value={{data[2]}} id="manufacturer" name="manufacturer" style="width: 120px; border: 1px solid"></td>
+                            <td data-label="img"><input value={{data[3]}} type="file" accept=".jpg, .png, .jpeg, .webp" name="img" multiple></td>
+                            <td data-label="information"><textarea id="information" name="information" style="width: 330px; border: 1px solid">{{data[4]}}</textarea></td>
+                            <td data-label="price"><input value={{data[5]}} id="price" name="price" style="width: 30px; border: 1px solid"></td>
+                            <td data-label="leave_condition"><input value={{data[6]}} id="leave_condition" name="leave_condition" style="width: 30px; border: 1px solid">
                                 <button style="background-color: red;">ENTER</button></td>
                         </form>
                         
