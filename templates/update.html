@@ -61,8 +61,8 @@
                         </tr>
                         <form method="post" action="/update/{{data[0]}}" enctype=multipart/form-data>
                             <td data-label="barcode"><input value={{data[0]}} id="id" name="id" style="width: 50px; border: 1px solid"></td>
-                            <td data-label="title"><input value={{data[1]}} id="title" name="title" style="width: 75px; border: 1px solid"></td>
-                            <td data-label="manufacturer"><input value={{data[2]}} id="manufacturer" name="manufacturer" style="width: 120px; border: 1px solid"></td>
+                            <td data-label="title"><textarea id="title" name="title" style="width: 75px; border: 1px solid">{{data[1]}}</textarea></td>
+                            <td data-label="manufacturer"><textarea id="manufacturer" name="manufacturer" style="width: 120px; border: 1px solid">{{data[2]}}</textarea></td>
                             <td data-label="img"><input value={{data[3]}} type="file" accept=".jpg, .png, .jpeg, .webp" name="img" multiple></td>
                             <td data-label="information"><textarea id="information" name="information" style="width: 330px; border: 1px solid">{{data[4]}}</textarea></td>
                             <td data-label="price"><input value={{data[5]}} id="price" name="price" style="width: 30px; border: 1px solid"></td>

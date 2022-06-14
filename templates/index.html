@@ -63,8 +63,8 @@
                         {%endfor%}
                         <form method="post" action="{{'/products'}}" enctype=multipart/form-data>
                             <td data-label="barcode"><input id="id" name="id" style="width: 50px; border: 1px solid"></td>
-                            <td data-label="title"><input id="title" name="title" style="width: 75px; border: 1px solid"></td>
-                            <td data-label="manufacturer"><input id="manufacturer" name="manufacturer" style="width: 120px; border: 1px solid"></td>
+                            <td data-label="title"><textarea id="title" name="title" style="width: 75px; border: 1px solid"></textarea></td>
+                            <td data-label="manufacturer"><textarea id="manufacturer" name="manufacturer" style="width: 120px; border: 1px solid"></textarea></td>
                             <td data-label="img"><input type="file" accept=".jpg, .png, .jpeg, .webp" name="img" multiple></td>
                             <td data-label="information"><textarea id="information" name="information" style="width: 330px; border: 1px solid"></textarea></td>
                             <td data-label="price"><input id="price" name="price" style="width: 30px; border: 1px solid"></td>
