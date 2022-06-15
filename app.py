@@ -158,7 +158,8 @@ def available():
     """Страница с наличием"""
 
     data = DB().get_all_available()
-    ids = [i[0] for i in data]
+    ids = [[i[0], i[1]] for i in data]
+    print(ids)
 
     # Добавление новой позиции
     if request.method == "POST":
@@ -166,12 +167,14 @@ def available():
         id_pharmacy = int(request.form['id_pharmacy'])
         id_good = request.form['id_good']
         available = request.form['available']
-        if id_pharmacy not in ids:
+
+        if [id_pharmacy, id_good] not in ids:
             DB().add_available(
                 {'id_pharmacy': int(id_pharmacy), 'id_good': id_good, 'available': available})
         else:
             DB().update_available(
                 {'id_pharmacy': int(id_pharmacy), 'id_good': id_good, 'available': available})
+
         return redirect(url_for('available'))
 
     # Возвращает pharmacies
