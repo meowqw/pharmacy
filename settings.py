@@ -3,7 +3,7 @@
 HOST = 'localhost'
 PORT = '80'
 USER = 'user'
-PASSWORD = '2110' # 'Neet2001'
+PASSWORD = 'Neet2001' # 'Neet2001'
 DB_NAME = 'pharmacy' # 'pharmacy'
 
 TOKEN = '5402759941:AAG0QLuwHDaUncynX7xJZJbG5Rdw-DtS1vk'
